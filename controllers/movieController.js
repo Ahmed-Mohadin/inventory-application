@@ -1,12 +1,42 @@
+const async = require('async');
+const { body, validationResult } = require('express-validator');
 const Movie = require('../models/movie');
+const Genre = require('../models/genre');
 
 exports.index = (req, res) => {
-  res.send('NOT IMPLEMENTED: Site Home Page');
+  async.parallel(
+    {
+      movie_count(callback) {
+        // Pass an empty object as match condition to find all documents of this collection
+        Movie.countDocuments({}, callback);
+      },
+      genre_count(callback) {
+        Genre.countDocuments({}, callback);
+      },
+    },
+    (err, results) => {
+      res.render('index', {
+        title: 'Inventory Application',
+        error: err,
+        data: results,
+      });
+    }
+  );
 };
 
 // Display list of all movies.
-exports.movie_list = (req, res) => {
-  res.send('NOT IMPLEMENTED: Movie list');
+exports.movie_list = (req, res, next) => {
+  Movie.find({}, '')
+    .sort({ title: 1 })
+    .populate('title')
+    .exec(function (err, movie_lists) {
+      if (err) return next(err);
+      //Successful, so render
+      res.render('movie/movie_list', {
+        title: 'Movie List',
+        movie_list: movie_lists,
+      });
+    });
 };
 
 // Display detail page for a specific movie.

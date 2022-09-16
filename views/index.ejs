@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <%- include('./partials/head.ejs') %>
+  <body class="home">
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+      <h2 class="home-title">
+        Welcome to Inventory Application, <br />
+        very basic Express website developed.
+      </h2>
+
+      <div class="data-count">
+        <% if(error) {%>
+        <p>Error getting dynamic content.</p>
+        <% } else {%>
+        <p>The Inventory Application has the following record counts:</p>
+        <div class="count">
+          <span><strong><%= data.movie_count %> Movies </strong></span>
+          <span>&</span>
+          <span><strong><%= data.genre_count %> Genres</strong></span>
+        </div>
+        <% } %>
+      </div>
+
+      <form action="" method="post">
+        <label for="search">Search for any movie or genre</label>
+        <br />
+        <input type="text" name="search" id="search" />
+        <button type="submit" class="btn btn-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>

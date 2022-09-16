@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="movie-list">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <h2><%= title %></h2>
+      <div class="movies">
+        <% movie_list.forEach((movie) => { %>
+        <a href="<%= movie.url %> " class="movie-card">
+          <img src="<%= movie.imageUrl %> " alt="<%= movie.title %>" />
+
+          <i class="fa-solid fa-circle-play"></i>
+          <div class="movie-text">
+            <h3 class="movie-title"><%= movie.title %></h3>
+            <p class="movie-release-date"><%= movie.releaseDate %></p>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

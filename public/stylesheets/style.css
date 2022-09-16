@@ -1,8 +1,215 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root{
+  --bgColor: #171717;
+
+  --txtColor: #F2F2F2;
+
+  --accentColor1: #737373;
+  --accentColor2: #222222;
+  --accentColor3: #F40612;
+
+  --shadow: rgba(0, 0, 0, 0.2) 0.2rem 0.2rem 0.2rem;
+
+  --defaultRadius: 0.3rem;
 }
 
-a {
-  color: #00B7FF;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+html{
+  font-family: sans-serif;
+  min-height: 100%;
+  position: relative;
+}
+body{
+  background-color: var(--bgColor);
+  color: var(--txtColor);
+  margin-bottom: 100px;
+}
+
+/* header */
+header{
+  height: 8rem;
+}
+a{
+  text-decoration: none;
+  color: var(--accentColor1);
+}
+ul{
+  list-style-type: none;
+}
+.btn{
+  outline: none;
+  border: none;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--defaultRadius);
+  font-weight: bold;
+}
+.btn:hover{
+  cursor: pointer;
+}
+h2{
+  font-size: 2em;
+}
+
+/* nav */
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+}
+nav ul{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+nav a:not(.navbar-brand)::after{
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 0.2rem;    
+  border-radius: var(--defaultRadius);
+}
+nav a:hover::after{
+  background-color: var(--txtColor);
+}
+.active{
+  color: var(--txtColor);
+}
+nav .navbar-brand{
+  color: var(--txtColor);
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+/* .home */
+.home{
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://empireweekly.com/wp-content/uploads/2022/02/fall-movies-index-1628968089.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.home .data-count{
+  margin: 2rem 0rem;
+}
+.home .data-count .count{
+  margin-top: 0.5rem;
+}
+.home form input[type="text"]{
+    border: none;
+    outline: none;
+    border-bottom: solid 0.2rem var(--accentColor2);
+    width: 20rem;
+    height: 2rem;
+    padding: 0rem 0.4rem;
+    font-size: 1em;
+    border-radius: var(--defaultRadius);
+    margin-top: 0.5rem;
+}
+.home form input[type="text"]:focus{
+    border-bottom-color: var(--accentColor3);
+}
+.home .btn{
+  background-color: var(--accentColor3);
+  color: var(--txtColor);
+}
+.home .btn:hover{
+  background-color: #ff0c18;
+}
+.home label{
+  font-size: 1.9em;
+}
+
+/* .movie-list */
+.movie-list{
+  text-align: center;
+}
+.movie-list .movies{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 4rem;
+}
+.movie-list .movie-card{
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 10%;
+  border-radius: var(--defaultRadius);
+  transition: all .4s ease-in-out;
+}
+.movie-list .movies a{
+  color: var(--txtColor);
+}
+.movie-list .movie-text{
+  font-size: 0.9em;
+  text-align: left;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap; 
+  width: 80%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.movie-list .movie-card .fa-circle-play{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  opacity: 0.5;
+}
+.movie-list .movie-text .movie-title{
+  margin-bottom: 0.3rem;
+}
+.movie-list img{
+  width: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+.movie-list .movie-card:hover > img, 
+.movie-list .movie-card:hover > .fa-circle-play{
+  opacity: 1;
+}
+.movie-list .movie-card:hover > .fa-circle-play{
+  font-size: 2.5em;
+}
+
+/* footer */
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer a{
+  border: solid 0.3rem transparent;
+}
+footer a:hover{
+  border-bottom-color: var(--txtColor);
+}
+
+/* media queries */
+/* @media(max-width: 769px){
+   .home input[type"text"]{
+        font-size: 1em;
+    }    
+}
+@media(max-width: 426px){
+  :root{
+    font-size: 0.6em;
+  }
+  .btn{
+      font-size: 0.9em;
+  }
+}*/

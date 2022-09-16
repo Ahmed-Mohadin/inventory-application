@@ -1,0 +1,22 @@
+<header>
+  <nav class="navbar">
+    <a href="/catalog" class="navbar-brand">
+      <i class="fa-solid fa-film"></i>
+      Inventory Application
+    </a>
+      <ul class="navbar-links">
+        <li class="link-item" >
+          <a href="/catalog" <% if (title === 'Inventory Application') { %>class="active" <% } %>>Home</a>
+        </li>
+        <li class="link-item" >
+          <a href="/catalog/movies" <% if (title === 'Movie List') { %>class="active" <% } %>>Movies</a>
+        </li>
+
+
+        <li class="link-item">
+          <a href="/catalog/genres" <% if (title === 'Genre List') { %>class="active" <% } %>>Genres</a>
+        </li>
+      </ul>
+    </a>
+  </nav>
+</header>
