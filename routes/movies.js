@@ -3,7 +3,6 @@ const router = express.Router();
 
 // Require controller modules.
 const movie_controller = require('../controllers/movieController');
-const review_controller = require('../controllers/reviewController');
 const genre_controller = require('../controllers/genreController');
 
 /// BOOK ROUTES ///
@@ -34,32 +33,6 @@ router.get('/movie/:id', movie_controller.movie_detail);
 
 // GET request for list of all Movie items.
 router.get('/movies', movie_controller.movie_list);
-
-/// AUTHOR ROUTES ///
-
-// GET request for creating Review. NOTE This must come before route for id (i.e. display review).
-router.get('/review/create', review_controller.review_create_get);
-
-// POST request for creating Review.
-router.post('/review/create', review_controller.review_create_post);
-
-// GET request to delete Review.
-router.get('/review/:id/delete', review_controller.review_delete_get);
-
-// POST request to delete Review.
-router.post('/review/:id/delete', review_controller.review_delete_post);
-
-// GET request to update Review.
-router.get('/review/:id/update', review_controller.review_update_get);
-
-// POST request to update Review.
-router.post('/review/:id/update', review_controller.review_update_post);
-
-// GET request for one Review.
-router.get('/review/:id', review_controller.review_detail);
-
-// GET request for list of all Reviews.
-router.get('/reviews', review_controller.review_list);
 
 /// GENRE ROUTES ///
 

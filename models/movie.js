@@ -7,6 +7,10 @@ var MovieSchema = new Schema({
     type: String,
     required: true,
   },
+  director: {
+    type: String,
+    required: true,
+  },
   releaseDate: {
     type: String,
     required: true,
