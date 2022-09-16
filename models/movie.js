@@ -33,7 +33,7 @@ var MovieSchema = new Schema({
 
 // Virtual for this movie instance URL.
 MovieSchema.virtual('url').get(function () {
-  return '/catalog/book/' + this._id;
+  return '/catalog/movie/' + this._id;
 });
 
 // Export model.
