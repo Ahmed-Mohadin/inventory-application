@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="genre-delete">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <h2><%= genre.name %></h2>
+      <% if(genre_movies.length) { %>
+      <p class="error">
+        <strong>
+          Delete the following movies before attempting to delete this genre.
+        </strong>
+      </p>
+      <div class="movies">
+        <h4>Movies</h4>
+        <% genre_movies.forEach((movie) => { %>
+        <div class="movie">
+          <a href="<%= movie.url %> ""
+            ><%= movie.title %>
+            by <%= movie.director %>
+          </a>
+        </div>
+        <% }) %>
+      </div>
+      <% } else {%>
+        <p> Do you really want to delete this Genre? </p>
+        <form action="" method="POST">
+            <input type="hidden" name="genreid" required="true" value="<%= genre._id %> ">
+            <button type="submit" class="btn btn-delete">Delete</button>
+        </form>
+        <% } %> 
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

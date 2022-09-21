@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="genre-list">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <h2><%= title %></h2>
+      <a class="btn genre-create" href="genre/create">Create new genre</a>
+      <div class="genres">
+        <% genre_list.forEach((genre) => { %>
+        <a href="<%= genre.url %> " class="genre-card">
+          <div class="genre-text">
+            <h3 class="genre-title"><%= genre.name %></h3>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

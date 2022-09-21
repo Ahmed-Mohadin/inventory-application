@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="genre-form">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <h2><%= title %></h2>
+      <% let genre %> <% if(locals.genre){ %> <% genre = locals.genre %> <% } %>
+      <form action="" method="post">
+        <div class="name">
+          <label for="name">Genre: </label>
+          <br />
+          <input
+            value="<%= (undefined === genre ? '' : genre.name) %> "
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Action, Comedy etch."
+            required
+          />
+          <br />
+          <% if(locals.errors) {%>
+          <ul>
+            <% errors.forEach((err) => {%>
+            <li class="error"><%= err.msg %></li>
+            <% })%>
+          </ul>
+          <% } %>
+        </div>
+        <button type="submit" class="btn btn-add-genre">Submit</button>
+      </form>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

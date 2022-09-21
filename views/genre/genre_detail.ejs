@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head.ejs') %>
-  <body class="movie-list">
+  <body class="genre-detail">
     <%- include('../partials/header.ejs') %>
 
     <main>
       <h2><%= title %></h2>
-      <a class="btn movie-create" href="movie/create">Create new movie</a>
-      <div class="movies">
-        <% movie_list.forEach((movie) => { %>
+      <h3><%= genre.name %></h3>
+      <div class="genre-movies">
+        <% if(genre_movies.length) {%> <% genre_movies.forEach((movie) =>{%>
         <a href="<%= movie.url %> " class="movie-card">
           <img
             src="/images/<%= movie.imageUrl|| 'placeholder-image.jpeg' %>"
@@ -21,8 +21,12 @@
             <p class="movie-release-date"><%= movie.releaseDate %></p>
           </div>
         </a>
-        <% }) %>
+        <% }) %> <% } else { %>
+        <p>This genre has no movies</p>
+        <% } %>
       </div>
+      <a href="<%=genre.url%>/update" class="btn btn-update">Update</a>
+      <a href="<%=genre.url%>/delete " class="btn btn-delete">Delete</a>
     </main>
 
     <%- include('../partials/footer.ejs') %>

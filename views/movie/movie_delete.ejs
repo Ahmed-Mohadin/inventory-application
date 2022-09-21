@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="movie-delete">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <h2><%= movie.title %></h2>
+      <p>Do you really want to delete this Movie?</p>
+      <form action="" method="POST">
+        <input
+          type="hidden"
+          name="genreid"
+          required="true"
+          value="<%= movie._id %> "
+        />
+        <button type="submit" class="btn btn-delete">Delete</button>
+      </form>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

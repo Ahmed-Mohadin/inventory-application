@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="movie-detail">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <div class="movie">
+        <img
+          src="/images/<%= movie.imageUrl|| 'placeholder-image.jpeg' %>"
+          alt="<%= (typeof movie.imageUrl !== 'undefined') ? movie.title : 'No image available' %>"
+        />
+
+        <div class="movie-text">
+          <h3 class="movie-title">
+            <%= movie.title %> (<%= movie.releaseDate %>)
+          </h3>
+          <p class="movie-director">Directed by <%= movie.director %></p>
+          <p class="movie-summary"><%= movie.summary %></p>
+          <div class="genres">
+            <% movie.genre.forEach((genre) => { %>
+            <a href="<%= genre.url %> " class="genre-card">
+              <div class="genre-text">
+                <h3 class="genre-title"><%= genre.name %></h3>
+              </div>
+            </a>
+            <% }) %>
+          </div>
+        </div>
+        <a href="<%=movie.url%>/update" class="btn btn-update">Update</a>
+        <a href="<%=movie.url%>/delete " class="btn btn-delete">Delete</a>
+      </div>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

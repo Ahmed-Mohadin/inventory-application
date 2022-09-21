@@ -8,7 +8,7 @@ require('dotenv').config();
 // Set up mongoose connection
 var mongoose = require('mongoose');
 var local_MONGO_UR = 'mongodb://localhost:27017/inventory_application';
-var mongoDB = process.env.MONG_UR || local_MONGO_UR;
+var mongoDB = process.env.MONGO_UR || local_MONGO_UR;
 mongoose
   .connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {

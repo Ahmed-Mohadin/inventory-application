@@ -16,21 +16,16 @@
         <% } else {%>
         <p>The Inventory Application has the following record counts:</p>
         <div class="count">
-          <span><strong><%= data.movie_count %> Movies </strong></span>
+          <a href="/catalog/movies" class="btn">
+            <%= data.movie_count %> Movies
+          </a>
           <span>&</span>
-          <span><strong><%= data.genre_count %> Genres</strong></span>
+          <a href="/catalog/genres" class="btn">
+            <%= data.genre_count %> Genres
+          </a>
         </div>
         <% } %>
       </div>
-
-      <form action="" method="post">
-        <label for="search">Search for any movie or genre</label>
-        <br />
-        <input type="text" name="search" id="search" />
-        <button type="submit" class="btn btn-search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
     </main>
 
     <%- include('./partials/footer.ejs') %>

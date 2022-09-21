@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <body class="movie-form">
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+      <h2><%= title %></h2>
+      <% let movie %> <% if(locals.movie){ %> <% movie = locals.movie %> <% } %>
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="movie-title">
+          <label for="title">Title: </label>
+          <br />
+          <input
+            value="<%= movie === undefined ? '' : movie.title %> "
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Movie title."
+          />
+          <br />
+          <% if(locals.errors) { %> <% errors.forEach((err) => { %> <%
+          if(err.param === 'title') {%>
+          <span class="error"> <%= err.msg %> </span>
+          <% } %> <% }) %> <% } %>
+        </div>
+        <div class="movie-director">
+          <label for="director">Director: </label>
+          <br />
+          <input
+            value="<%= movie === undefined ? '' : movie.director %> "
+            type="text"
+            name="director"
+            id="director"
+            placeholder="Movie director."
+          />
+          <br />
+          <% if(locals.errors) { %> <% errors.forEach((err) => { %> <%
+          if(err.param === 'director') {%>
+          <span class="error"> <%= err.msg %> </span>
+          <% } %> <% }) %> <% } %>
+        </div>
+        <div class="movie-releaseDate">
+          <label for="releaseDate">Realease date:</label>
+          <br />
+          <input
+            value="<%= movie === undefined ? '' : movie.releaseDate %> "
+            type="text"
+            name="releaseDate"
+            id="releaseDate"
+            placeholder="Movie realease date."
+          />
+          <br />
+          <% if(locals.errors) { %> <% errors.forEach((err) => { %> <%
+          if(err.param === 'releaseDate') {%>
+          <span class="error"> <%= err.msg %> </span>
+          <% } %> <% }) %> <% } %>
+        </div>
+        <div class="movie-summary">
+          <label for="summary">Summary:</label>
+          <br />
+          <textarea
+            name="summary"
+            id="summary"
+            cols="41"
+            rows="13"
+            placeholder="Movie summary."
+          >
+<%= movie === undefined ? '' : movie.summary  %> 
+        </textarea
+          >
+          <br />
+          <% if(locals.errors) { %> <% errors.forEach((err) => { %> <%
+          if(err.param === 'summary') {%>
+          <span class="error"> <%= err.msg %> </span>
+          <% } %> <% }) %> <% } %>
+        </div>
+        <div class="movie-imageUrl">
+          <label for="imageUrl">Image url:</label>
+          <br />
+          <input
+            value=""
+            type="file"
+            name="imageUrl"
+            id="imageUrl"
+            placeholder="Movie image url."
+            accept="image/*"
+            required
+          />
+          <br />
+          <% if(locals.errors) { %> <% errors.forEach((err) => { %> <%
+          if(err.param === 'imageUrl') {%>
+          <span class="error"> <%= err.msg %> </span>
+          <% } %> <% }) %> <% } %>
+        </div>
+        <div class="movie-genres">
+          <% genres.forEach((genre) => {%>
+          <div class="<%= genre.name %>">
+            <label for="<%= genre._id %> "><%= genre.name %>: </label>
+            <input
+              type="checkbox"
+              name="genre"
+              id="<%= genre._id %>"
+              value="<%= genre._id %>"
+            />
+          </div>
+          <% }) %>
+        </div>
+        <button type="submit" class="btn btn-add-movie">Submit</button>
+      </form>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
